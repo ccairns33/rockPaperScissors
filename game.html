@@ -6,20 +6,21 @@
       let compScore = 0;
       let humanScore = 0;
       console.log("Welcome to Rock, Paper, Scissors! Beware, you are playing a computer!");
-      input = prompt("What say you for your choice? Rock, paper, or scissors?");
-  
+
       // plays the game for 5 rounds
       for (let i = 0; i < 5; i++){
+        input = prompt("What say you for your choice? Rock, paper, or scissors?");
+
           game(humanChoice(input), computerChoice());
       }
       if (humanScore > compScore){
-          console.log("You win!");
+          console.log("**You win the game!**");
       }
       else if (compScore > humanScore){
-          console.log("Computer wins :/");
+          console.log("**Computer wins the game :/**");
       }
       else {
-          console.log("Its a tie!");
+          console.log("**Its a tie game!**");
       }
 
 
