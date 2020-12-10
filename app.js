@@ -1,99 +1,166 @@
-let input = "";
       let compScore = 0;
       let humanScore = 0;
-      console.log("Welcome to Rock, Paper, Scissors! Beware, you are playing a computer!");
+      const humanWins = document.querySelector(".player-score p");
+      const compWins = document.querySelector(".comp-score p");
+      const matchOutcome = document.querySelector(".match .outcome");
+      const images = document.querySelectorAll("img");
+
+      
 
 
-      // plays the game for 5 rounds
-      for (let i = 0; i < 5; i++){
-        input = prompt("What say you for your choice? Rock, paper, or scissors?");
+playMatch();
+       
 
-          game(humanChoice(input), computerChoice());
+    
+
+
+    function imageRestart(){
+     images.forEach((image)=>{
+        image.classList.remove("fadeOut");
+        });
+    }
+    
+      function playMatch(){
+        const options = document.querySelectorAll("button");
+        let compOptions = ["rock", "paper", "scissors"];
+        let randNum = compRandRoll();
+        imageRestart();
+            options.forEach((option)=> { //for each button add event listener for click
+                option.addEventListener("click", function(){ 
+                    // after player clicks, computer selection is made
+                    let compChoice = compOptions[randNum];
+                    let humanChoice = this.textContent.toLowerCase();
+
+                    compareChoice(humanChoice, compChoice);
+
+
+                    });
+
+            });
+               
       }
-      if (humanScore > compScore){
-          console.log("**You win the game!**");
-      }
-      else if (compScore > humanScore){
-          console.log("**Computer wins the game :/**");
-      }
-      else {
-          console.log("**Its a tie game!**");
-      }
+      function compareChoice(humanChoice, compChoice){
+       images.forEach((image)=>{
+        // changing images on the screen
 
-
-      function game (humanSelection, compSelection){
-        // R P S
-            if (humanSelection == compSelection){
-                console.log("It's a tie this round...");
+            if (image.id !== humanChoice && image.id !== compChoice){
+                image.classList.add("fadeOut");
             }
-            else if (humanSelection == 0 && compSelection == 1){ // H: rock C: paper
-                console.log("Computer wins this round!");
+            
+        });
+        console.log(humanChoice + " " +compChoice);
+        //Rock Paper Scissor comparison
+          if (humanChoice === "rock"){
+                if (compChoice === "paper"){
+                    matchOutcome.textContent = 'Computer wins this round!';
+                    compScore++;
+                    updateScore(humanScore, compScore);
+                    return;
+
+                }
+                else if (compChoice == "scissors"){
+                    matchOutcome.textContent= "You win this round!";
+                    humanScore++;
+
+                    updateScore(humanScore, compScore);
+                    return;
+
+
+                }
+                else {
+                    matchOutcome.textContent="It's a tie round.";
+
+                    return;
+                }
+          }
+        else if (humanChoice === "paper"){
+            if (compChoice === "scissors"){
+                matchOutcome.textContent="Computer wins this round!";
                 compScore++;
 
+                updateScore(humanScore, compScore);
+                return;
             }
-            else if (humanSelection == 1 && compSelection == 0){ // H:P C:R
-                console.log("You win this round!");
-                humanScore++;
-            }
-            else if (humanSelection == 0 && compSelection == 2){ // H:R C:S
-                console.log("You win this round!");
-                humanScore++;
-            }
-            else if (humanSelection == 2 && compSelection == 0){ // H:S C: R
-                console.log("Computer wins this round!");
-                compScore++;
-            }
-            else if (humanSelection == 2 && compSelection == 1){ //H:S C:P
-                console.log("You win this round!");
+            else if (compChoice == "rock"){
+                matchOutcome.textContent="You win this round!";
                 humanScore++;
 
+                updateScore(humanScore, compScore);
+                return;
+
             }
-            else if (humanSelection == 1 && compSelection == 2){ //H:P C:S
-                console.log("Computer wins this round!");
-                compScore++;
- 
+            else {
+                matchOutcome.textContent="It's a tie round.";
+
+                return;
             }
       }
+      else if (humanChoice === "scissors"){
+        if (compChoice === "rock"){
+            matchOutcome.textContent="Computer wins this round!";
+            compScore++;
 
-      function humanChoice(input){
-            input = input.toLowerCase();
-            if (input =="rock"){
-               console.log("You chose " + input +".");
+            updateScore(humanScore, compScore);
+            return;
 
-                return 0;
+        }
+        else if (compChoice == "paper"){
+            matchOutcome.textContent="You win this round!";
+            humanScore++;
+
+            updateScore(humanScore, compScore);
+            return;
+
+
+        }
+        else {
+
+            matchOutcome.textContent="It's a tie round.";
+            return;
+        }
+  }
+
+}
+      function updateScore(humanScore, compScore){
+        humanWins.textContent=humanScore.toString();
+        compWins.textContent=compScore.toString();
+        
+        
+        return;
+      }
+      function finalScore(){
+            if (humanScore > compScore){
+                matchOutcome.textContent = "** You WIN!**"
+                humanScore = 0;
+                humanWins.textContent=humanScore.toString();
+
+                compScore = 0;
+                compWins.textContent=compScore.toString();
+
             }
-            if (input == "paper"){
-                console.log("You chose " + input +".");
+            else if (humanScore < compScore){
+                matchOutcome.textContent = "** You LOSE!**"
+                humanScore = 0;
+                humanWins.textContent=humanScore.toString();
 
-                return 1;
+                compScore = 0;
+                compWins.textContent=compScore.toString();
+
+
             }
-            if (input =="scissors"){
-                console.log("You chose " + input +".");
+            else {
+                matchOutcome.textContent = "** IT'S A TIE!**"
+                humanScore = 0;
+                humanWins.textContent=humanScore.toString();
 
-                return 2;
+                compScore = 0;
+                compWins.textContent=compScore.toString();
+
             }
-
       }
 
       function compRandRoll(){
           return Math.floor(Math.random() * Math.floor(3)); // 0 , 1 , 2 ;
       }
-      function computerChoice(){
-          let comp = compRandRoll();
-          if (comp == 0) {
-            console.log("The computer chose rock.");
-
-              return 0;
-          }
-          if (comp == 1) {
-            console.log("The computer chose paper.");
-
-              return 1;
-          }
-          if (comp == 2) {
-            console.log("The computer chose scissors.");
-
-              return 2;
-          }
-      }
+      
 

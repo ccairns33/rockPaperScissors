@@ -24,6 +24,12 @@ img{
     width: 200px;
     height:200px;
 }
+.fadeOut{
+    opacity: 0;
+}
+.fadeIn{
+    opacity: 1;
+}
 .score{
     display: inline-flex;
     flex-direction: row;
