@@ -23,13 +23,14 @@ header {
 img{
     width: 200px;
     height:200px;
+    transition: opacity 2s;
+    transition-timing-function: cubic-bezier();
 }
-.fadeOut{
+img .fadeOut{
     opacity: 0;
+
 }
-.fadeIn{
-    opacity: 1;
-}
+
 .score{
     display: inline-flex;
     flex-direction: row;
