@@ -18,7 +18,7 @@
     Rock Paper Scissors game against a computer opponent built with Javascript, HTML, and CSS.
     <br />
     <a href="https://github.com/ccairns33/rockPaperScissors"><strong>Explore the docs »</strong></a>
-    <a href="https://ccairns33.github.io/rockPaperScissors/index.html"><strong>Live demo »</strong></a>
+    <a href="https://ccairns33.github.io/rockPaperScissors/"><strong>Live demo »</strong></a>
 
   </p>
 </div>
@@ -73,7 +73,7 @@ A Rock Paper Scissors game built with Javascript, HTML, and CSS. The computer wi
 
 1. Clone the repo
    ```sh
-   git clone https://ccairns33.github.io/rockPaperScissors/index.html
+   git clone https://github.com/ccairns33/rockPaperScissors.git
    ```
 
 
