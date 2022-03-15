@@ -53,7 +53,7 @@
 
 ![InevntoryApp Screen Shot][product-screenshot]
 
-A Rock Paper Scissors game built with Javascript, HTML, and CSS. The computer will randomly make a selection against the user's choice. Javascript DOM manipulation is used in order to detect the user's selection and display the outcome of the round.
+A Rock Paper Scissors game built with Javascript, HTML, and CSS. The computer will randomly make a selection against the user's choice. The computer's choice is then outputted to the console. Javascript DOM manipulation is used in order to detect the user's selection and display the outcome of the round. 
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
